@@ -1,136 +1,87 @@
-# Instructions on creating the repo
-This file is divided up into two parts, the first is instructions on creating the repo and cloning the template, the second part is the template for the `README.md` file that will serve as the home page and installation instructions for the integration. 
+# ServiceNow Emergency Change Approval
 
-Some examples to emulate:
-* [Logz.io](https://github.com/xmatters/xm-labs-logz.io-elk)
-* [StatusPage](https://github.com/xmatters/xm-labs-statuspage)
-
-## 1. Create the repo
-[Create the repo](https://help.github.com/articles/create-a-repo/) using your own GitHub account. Please prefix the name of the repo with `xm-labs-` and all in lower case. When you create the repo don't add a README or LICENSE; this will make sure to initialize an empty repo. 
-
-## 2. Populate the repo
-There are two options here:
-
-1. [Create from scratch](#create-from-scratch) - great for quick and easy start
-2. [Clone the template](#clone-the-template) - great for ensuring all the components are ready
-
-### Create from scratch
-Creating from scratch is great if you just want to dive in and get the repo started. Just make sure you have all the necessary files and formats. 
-
-The repo should have the following files:
-* **README.md** - This is the main page of the repo and will contain all the instructions and links. See below for document structure
-* **LICENSE** - This is the license to cover copying and such. Just copy the contents of [this file](https://github.com/xmatters/xm-labs-template/blob/master/LICENSE)
-* **/media/*** - Directory for holding screenshots or videos
-* As needed:
-   * **Workflow.zip** - Helpful for packaging one or more steps for easy import. Also necessary for any forms and templates
-   * **somescript.js** - If it makes more sense to just include a javascript file that gets copy/pasted then name it appropriately
-
-The **README.md** file should have the following structure and contents
-* **Name**
-   * Quick, two line description of the entry
-   * Link to disclaimer image: https://raw.githubusercontent.com/xmatters/xMatters-Labs/master/media/disclaimer.png. Note that when clicked, the browser is sent here: https://support.xmatters.com/hc/en-us/community/topics
-* **Pre-Requisites**
-   * A list of pre-reqs to use the entry. Versions where applicable are helpful. 
-* **Files**
-   * A list of necessary files. If there is a workflow.zip file add an entry here with a link. 
-* **How it works**
-   * An in-depth description of how it works. Especially any tricky or confusing bits
-* **Installation**
-   * Installation details. Use whatever order makes sense
-   * **xMatters**
-   * **"Other"**
-* **Testing**
-   * How do I know it's working? What should I expect?
-* **Troubleshooting**
-   * Point to docs in the help walk through the pieces of the "pipeline" and where to inspect for errors or broken bits
-
-### Clone the template
-*Note*: These instructions use git in the terminal. The GitHub desktop client is rather limited and likely won't save you any headaches. 
-
-Open a command line and do the following. Where `MY_NEW_REPO_NAME_HERE` is the name of your GitHub repo and `MY_NEW_REPO_URL` is the url generated when you create the new repo. 
-
-```bash
-# Clone the template repo to the local file system. 
-git clone https://github.com/xmatters/xm-labs-template.git
-# Change the directory name to avoid confusion, then cd into it
-mv xm-labs-template MY_NEW_REPO_NAME_HERE
-cd MY_NEW_REPO_NAME_HERE
-# Remove the template git history
-rm -Rf .git/
-# Initialize the new git repo
-git init
-# Point this repo to the one on GitHub
-git remote add origin https://github.com/MY_NEW_REPO_URL.git
-# Add all files in the current directory and commit to staging
-git add .
-git commit -m "initial commit"
-# Push to cloud!
-git push origin master
-```
-
-## 3. Make updates
-Then, make the updates to the `README.md` file and add any other files necessary. `README.md` files are written in GitHub-flavored markdown, see [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) for a quick reference. 
-
-
-## 4. Push to GitHub
-Periodically, you will want to do a `git commit` to stash the changes locally. Then, when you are ready or need to step away, do a `git push origin master` to push the local changes to github.com. 
-
-## 5. Request to add to xM Labs
-Once you are all finished, let Travis know and he will then fork it to the xMatters account and update the necessary links in the xM Labs main page. From there if you update your repo, those changes can be merged into the xMatters account repo and everything will be kept up to date!
-
-# Template below:
----
-
-# Product Name Goes Here
-A note about what the product is and what this integration/scriptlet is all about. Check out the sweet video [here](media/mysweetvideo.mov). Be sure to indicate what type of integration or enhancement you're building! (One-way or closed-loop integration? Script library? Feature update? Enhancement to an existing integration?)
+The ServiceNow Emergency Change Approval workflow alerts members of your Change Approval group via xMatters. Notifications are delivered via voice, SMS, mobile app, email, and other xMatters devices to ensure approvals don’t delay resolution of critical incidents. By leveraging xMatters with your existing ServiceNow Emergency Change Approval process, you can eliminate manual callouts and reduce the time it takes to approve or decline emergency change requests.
 
 <kbd>
-  <a href="https://support.xmatters.com/hc/en-us/community/topics"><img src="https://github.com/xmatters/xMatters-Labs/raw/master/media/disclaimer.png"></a>
+  <a href="https://support.xmatters.com/hc/en-us/community/topics">
+    <img alt="xMatters Labs disclaimer" src="https://raw.githubusercontent.com/xmatters/xMatters-Labs/master/media/disclaimer.png">
+  </a>
 </kbd>
 
-# Pre-Requisites
-* Version 453 of App XYZ
-* Account in Application ABC
-* xMatters account - If you don't have one, [get one](https://www.xmatters.com)!
+## Pre-requisites
+- ServiceNow
+- Everbridge Flow Designer app ([ServiceNow Store](https://store.servicenow.com/store/app/4f5cfd441b172e50c43e65b2604bcbad))
+- ServiceNow xMatters workflow (Flow Designer)
+- xMatters account — if you don't have one, [get one](https://www.xmatters.com)
 
-# Files
-* [ExampleCommPlan.zip](ExampleCommPlan.zip) - This is an example comm plan to help get started. (If it doesn't make sense to have a full communication plan, then you can just use a couple javascript files like the one below.)
-* [EmailMessageTemplate.html](EmailMessageTemplate.html) - This is an example HTML template for emails and push messages. 
-* [FileA.js](FileA.js) - An example javascript file to be pasted into a Shared Library in the Integration builder. Note the comments
+## Files
+- Emergency Change Approval xMatters workflow: [ServiceNowEmergencyChangeApproval.zip](./ServiceNowEmergencyChangeApproval.zip)
 
-# How it works
-Add some info here detailing the overall architecture and how the integration works. The more information you can add, the more helpful this sections becomes. For example: An action happens in Application XYZ which triggers the thingamajig to fire a REST API call to the xMatters inbound integration on the imported communication plan. The integration script then parses out the payload and builds an event and passes that to xMatters. 
+## Installation
 
-# Installation
-Details of the installation go here. 
+### Import the workflow
+1. Log in to xMatters.
+2. Click Workflows from the left-hand navigation menu.
+3. Import the ServiceNow Emergency Change Approval workflow from this repo.
 
-## xMatters set up
-1. Steps to create a new Shared Library or (in|out)bound integration or point them to the xMatters online help to cover specific steps; i.e., import a communication plan (link: http://help.xmatters.com/OnDemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm)
-2. Add this code to some place on what page:
-   ```
-   var items = [];
-   items.push( { "stuff": "value"} );
-   console.log( 'Do stuff' );
-   ```
+### Configure the ServiceNow endpoint
+1. Edit the ServiceNow Emergency Change Approval workflow you just imported.
+2. Go to the Flow Designer tab.
+3. Click Components → Endpoints.
+4. Click ServiceNow.
+5. Configure the ServiceNow endpoint (see [Flow Designer Endpoints](https://help.xmatters.com/ondemand/flowdesigner/components.htm?cshid=FlowEndpoints#Endpoints)).
 
+### Create ServiceNow Record Alerts trigger profile (Everbridge Flow Designer)
+Follow the documentation and complete the configuration as described below: [ServiceNow Record Alerts Trigger](https://help.xmatters.com/ondemand/flowdesigner/servicenow-record-alerts.htm?cshid=SNOWRecordAlertsTrigger)
 
-## Application ABC set up
-Any specific steps for setting up the target application? The more precise you can be, the better!
+To create a trigger profile:
+1. In ServiceNow, go to Everbridge Flow Designer → Global Settings → Trigger Profiles.
+2. Click New (upper-right corner).
+3. Fill in the following fields:
+   - **Name**: e.g., "Change Approval" — a descriptive name for this trigger profile.
+   - **Credentials**: Select the xMatters user credentials configured for this integration.
+     - If using URL auth, leave this field blank.
+   - **Workflow**: e.g., "ServiceNow (Flow Designer) v2". After selecting credentials, the list populates with available Flow Designer workflows.
+     - If using URL auth, leave the "-- Enter trigger URL manually --" option selected.
+   - **Trigger**: e.g., "ServiceNow Records Alerts Approval [sysapproval_approver]". After selecting a workflow, choose the trigger used to initiate the flow.
+   - **Trigger URL**: Automatically filled once a trigger is selected.
+     - If using URL auth, enter the trigger URL manually.
+   - **Default Alert Priority**: Select a value to send to Flow Designer (the integration may override based on incident priority).
+   - **Default Signal Mode**: Optional free text value sent to Flow Designer; the integration may override based on create/update behavior.
+   - **Additional Recipients**: e.g., "CAB Approval" — groups or users from xMatters or Everbridge to notify in addition to the Assignment group/Assigned to.
+   - **ServiceNow API User**: Select the ServiceNow user that Flow Designer uses to send updates in ServiceNow.
 
-Images are encouraged. Adding them is as easy as:
-```
-<kbd>
-  <img src="media/cat-tax.png" width="200" height="400">
-</kbd>
-```
+### Optional: add Emergency Change Approval to an existing ServiceNow workflow
+If you want the Emergency Change Approval workflow inside your existing ServiceNow workflow:
+1. Open your existing ServiceNow workflow.
+2. Go to the Flow Designer tab.
+3. Create a new Flow Canvas.
+4. Name the canvas “Emergency Change Approval”.
+5. Click Create.
+6. From the Trigger tab, search for “ServiceNow Record Alerts”.
+7. Drag “ServiceNow Record Alerts” onto the canvas.
+8. Double-click the “ServiceNow Record Alerts” trigger step now on the canvas.
+9. Select the “ServiceNow” endpoint.
+10. Select the Approvals `[sysapproval_approver]` table.
+11. Select the following output mapping sources:
+   - Approver
+   - Approval for
+   - Approval source
+   - Due date
+   - State
+12. From the Flow Designer TOOLS tab, search for “Create Alert”.
+13. Drag the “Create Alert” step onto the canvas and attach it to the “ServiceNow Record Alerts Approval `[sysapproval_approver]`” trigger step you created.
+14. Configure the “Create Alert” step as desired. You can use the imported ServiceNow Emergency Change Approval workflow as a reference.
 
-<kbd>
-  <img src="media/cat-tax.png" width="200" height="400">
-</kbd>
+## How it works
+At a high level, ServiceNow approval records trigger xMatters to notify your Change Approval group. Responders can approve or decline via their chosen device, and responses are synchronized back to ServiceNow.
 
+## Testing
+- Create a test approval record in ServiceNow that targets the configured Change Approval group.
+- Verify xMatters creates and notifies an event.
+- Respond to the notification and confirm the state is updated in ServiceNow.
 
-# Testing
-Be specific. What should happen to make sure this code works? What would a user expect to see? 
-
-# Troubleshooting
-Optional section for how to troubleshoot. Especially anything in the source application that an xMatters developer might not know about, or specific areas in xMatters to look for details - like the Activity Stream? 
+## Troubleshooting
+- Verify the ServiceNow endpoint credentials and URL in xMatters.
+- Check the xMatters Flow Designer Activity Stream for errors.
+- Ensure the Everbridge/xMatters app in ServiceNow is installed and configured. 
