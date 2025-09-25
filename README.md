@@ -20,7 +20,7 @@ The ServiceNow Emergency Change Approval workflow alerts members of your Change 
 
 ## How it works
 
-
+ <img src="./media/how-it-works.jpeg">
 
 
 
