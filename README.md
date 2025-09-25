@@ -17,12 +17,16 @@ The ServiceNow Emergency Change Approval workflow alerts members of your Change 
 ## Files
 - Emergency Change Approval xMatters workflow: [ServiceNowEmergencyChangeApproval.zip](./ServiceNowEmergencyChangeApproval.zip)
 
+
+
 ## Installation
+
 
 ### Import the workflow
 1. Log in to xMatters.
 2. Click Workflows from the left-hand navigation menu.
 3. Import the ServiceNow Emergency Change Approval workflow from this repo.
+
 
 ### Configure the ServiceNow endpoint
 1. Edit the ServiceNow Emergency Change Approval workflow you just imported.
@@ -31,10 +35,11 @@ The ServiceNow Emergency Change Approval workflow alerts members of your Change 
 4. Click ServiceNow.
 5. Configure the ServiceNow endpoint (see [Flow Designer Endpoints](https://help.xmatters.com/ondemand/flowdesigner/components.htm?cshid=FlowEndpoints#Endpoints)).
 
-### Create ServiceNow Record Alerts trigger profile (Everbridge Flow Designer)
-Follow the documentation and complete the configuration as described below: [ServiceNow Record Alerts Trigger](https://help.xmatters.com/ondemand/flowdesigner/servicenow-record-alerts.htm?cshid=SNOWRecordAlertsTrigger)
 
-To create a trigger profile:
+### Create ServiceNow Everbridge Flow Designer app Trigger Profile
+Documentation: [ServiceNow Record Alerts Trigger](https://help.xmatters.com/ondemand/flowdesigner/servicenow-record-alerts.htm?cshid=SNOWRecordAlertsTrigger)
+
+
 1. In ServiceNow, go to Everbridge Flow Designer → Global Settings → Trigger Profiles.
 2. Click New (upper-right corner).
 3. Fill in the following fields:
@@ -51,6 +56,8 @@ To create a trigger profile:
    - **Additional Recipients**: e.g., "CAB Approval" — groups or users from xMatters or Everbridge to notify in addition to the Assignment group/Assigned to.
    - **ServiceNow API User**: Select the ServiceNow user that Flow Designer uses to send updates in ServiceNow.
 
+
+
 ### Optional: add Emergency Change Approval to an existing ServiceNow workflow
 If you want the Emergency Change Approval workflow inside your existing ServiceNow workflow:
 1. Open your existing ServiceNow workflow.
@@ -64,24 +71,11 @@ If you want the Emergency Change Approval workflow inside your existing ServiceN
 9. Select the “ServiceNow” endpoint.
 10. Select the Approvals `[sysapproval_approver]` table.
 11. Select the following output mapping sources:
-   - Approver
-   - Approval for
-   - Approval source
-   - Due date
-   - State
+      - Approver
+      - Approval for
+      - Approval source
+      - Due date
+      - State
 12. From the Flow Designer TOOLS tab, search for “Create Alert”.
 13. Drag the “Create Alert” step onto the canvas and attach it to the “ServiceNow Record Alerts Approval `[sysapproval_approver]`” trigger step you created.
 14. Configure the “Create Alert” step as desired. You can use the imported ServiceNow Emergency Change Approval workflow as a reference.
-
-## How it works
-At a high level, ServiceNow approval records trigger xMatters to notify your Change Approval group. Responders can approve or decline via their chosen device, and responses are synchronized back to ServiceNow.
-
-## Testing
-- Create a test approval record in ServiceNow that targets the configured Change Approval group.
-- Verify xMatters creates and notifies an event.
-- Respond to the notification and confirm the state is updated in ServiceNow.
-
-## Troubleshooting
-- Verify the ServiceNow endpoint credentials and URL in xMatters.
-- Check the xMatters Flow Designer Activity Stream for errors.
-- Ensure the Everbridge/xMatters app in ServiceNow is installed and configured. 
