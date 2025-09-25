@@ -18,6 +18,12 @@ The ServiceNow Emergency Change Approval workflow alerts members of your Change 
 - Emergency Change Approval xMatters workflow: [ServiceNowEmergencyChangeApproval.zip](./ServiceNowEmergencyChangeApproval.zip)
 
 
+## How it works
+
+
+
+
+
 
 ## Installation
 
@@ -63,12 +69,12 @@ If you want the Emergency Change Approval workflow inside your existing ServiceN
 1. Open your existing ServiceNow workflow.
 2. Go to the Flow Designer tab.
 3. Create a new Flow Canvas.
-4. Name the canvas “Emergency Change Approval”.
+4. Name the canvas "Emergency Change Approval".
 5. Click Create.
-6. From the Trigger tab, search for “ServiceNow Record Alerts”.
-7. Drag “ServiceNow Record Alerts” onto the canvas.
-8. Double-click the “ServiceNow Record Alerts” trigger step now on the canvas.
-9. Select the “ServiceNow” endpoint.
+6. From the Trigger tab, search for "ServiceNow Record Alerts".
+7. Drag "ServiceNow Record Alerts" onto the canvas.
+8. Double-click the "ServiceNow Record Alerts" trigger step now on the canvas.
+9. Select the "ServiceNow" endpoint.
 10. Select the Approvals `[sysapproval_approver]` table.
 11. Select the following output mapping sources:
       - Approver
@@ -76,6 +82,6 @@ If you want the Emergency Change Approval workflow inside your existing ServiceN
       - Approval source
       - Due date
       - State
-12. From the Flow Designer TOOLS tab, search for “Create Alert”.
-13. Drag the “Create Alert” step onto the canvas and attach it to the “ServiceNow Record Alerts Approval `[sysapproval_approver]`” trigger step you created.
-14. Configure the “Create Alert” step as desired. You can use the imported ServiceNow Emergency Change Approval workflow as a reference.
+12. From the Flow Designer TOOLS tab, search for "Create Alert".
+13. Drag the "Create Alert" step onto the canvas and attach it to the "ServiceNow Record Alerts Approval `[sysapproval_approver]`" trigger step you created.
+14. Configure the "Create Alert" step as desired. You can use the imported ServiceNow Emergency Change Approval workflow as a reference.
