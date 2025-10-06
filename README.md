@@ -63,6 +63,32 @@ Documentation: [ServiceNow Record Alerts Trigger](https://help.xmatters.com/onde
    - **ServiceNow API User**: Select the ServiceNow user that Flow Designer uses to send updates in ServiceNow.
 
 
+### Create ServiceNow Business Rule 
+
+1. In ServiceNow, navigate to System Definition → Business Rules.
+2. Configure the Business Rule with the following settings:
+
+**When to run**:
+  - **When**: after
+  - **Order**: 100
+  - **Check**: Insert
+  - **Filter Condition**: State is Requested
+
+**Actions**: no actions required
+
+**Advanced**:
+  Paste the following script:
+
+```javascript
+var myConfig = {
+  "triggerProfile": "Change Approval",
+  "signalMode": "Approval",
+  "alertPriority": "Medium"
+};
+var FlowDesignerClient = new x_xma_eb_fd.EBClient(config = myConfig);
+FlowDesignerClient.triggerWorkflow(current, previous);
+```
+
 
 ### Optional: add Emergency Change Approval to an existing ServiceNow workflow
 If you want the Emergency Change Approval workflow inside your existing ServiceNow workflow:
@@ -77,11 +103,11 @@ If you want the Emergency Change Approval workflow inside your existing ServiceN
 9. Select the "ServiceNow" endpoint.
 10. Select the Approvals `[sysapproval_approver]` table.
 11. Select the following output mapping sources:
-      - Approver
-      - Approval for
-      - Approval source
-      - Due date
-      - State
+     - Approver
+     - Approval for
+     - Approval source
+     - Due date
+     - State
 12. From the Flow Designer TOOLS tab, search for "Create Alert".
 13. Drag the "Create Alert" step onto the canvas and attach it to the "ServiceNow Record Alerts Approval `[sysapproval_approver]`" trigger step you created.
 14. Configure the "Create Alert" step as desired. You can use the imported ServiceNow Emergency Change Approval workflow as a reference.
