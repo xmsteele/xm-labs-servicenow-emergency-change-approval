@@ -68,26 +68,26 @@ Documentation: [ServiceNow Record Alerts Trigger](https://help.xmatters.com/onde
 1. In ServiceNow, navigate to System Definition → Business Rules.
 2. Configure the Business Rule with the following settings:
 
-**When to run**:
-  - **When**: after
-  - **Order**: 100
-  - **Check**: Insert
-  - **Filter Condition**: State is Requested
+    **When to run**:
+      - **When**: after
+      - **Order**: 100
+      - **Check**: Insert
+      - **Filter Condition**: State is Requested
 
-**Actions**: no actions required
+    **Actions**: no actions required
 
-**Advanced**:
-  Paste the following script:
+    **Advanced**:
+      Paste the following script:
 
-```javascript
-var myConfig = {
-  "triggerProfile": "Change Approval",
-  "signalMode": "Approval",
-  "alertPriority": "Medium"
-};
-var FlowDesignerClient = new x_xma_eb_fd.EBClient(config = myConfig);
-FlowDesignerClient.triggerWorkflow(current, previous);
-```
+    ```javascript
+    var myConfig = {
+      "triggerProfile": "Change Approval",
+      "signalMode": "Approval",
+      "alertPriority": "Medium"
+    };
+    var FlowDesignerClient = new x_xma_eb_fd.EBClient(config = myConfig);
+    FlowDesignerClient.triggerWorkflow(current, previous);
+    ```
 
 
 ### Optional: add Emergency Change Approval to an existing ServiceNow workflow
